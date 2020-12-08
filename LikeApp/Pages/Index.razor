@@ -1,0 +1,69 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.SignalR.Client
+@using Microsoft.AspNetCore.Http
+@using LikeApp.Repository
+@inject NavigationManager NavigationManager
+@inject ArticleRepository  ArticleRepository
+@inject ArticleLikeRepository ArticleLikeRepository
+@inject IHttpContextAccessor _httpContextAccessor
+    @implements IAsyncDisposable
+
+
+    <div class="form-group">
+        <label>
+            Like Counts: @LikeCount
+        </label>
+        <input @bind="PostId" type="hidden" />
+    </div>
+    @if (!liked)
+    {
+        <button @onclick="Send" disabled="@(!IsConnected)">Like</button>
+    }
+    else
+    {
+        <button disabled>Liked</button>
+    }
+
+
+    @code {
+        private HubConnection hubConnection;
+        public int LikeCount = 0;
+        public int PostId = 0;
+        public bool liked;
+
+        protected override async Task OnInitializedAsync()
+        {
+            var article = ArticleRepository.GetArticle();
+            PostId = (article != null) ? article.Id : 0;
+            LikeCount = ArticleLikeRepository.CountById(PostId);
+            var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            liked = ArticleLikeRepository.Exists(PostId, ipAddress);
+            var url = NavigationManager.ToAbsoluteUri("/likehub");
+            hubConnection = new HubConnectionBuilder()
+                .WithUrl(url)
+                .Build();
+
+            hubConnection.On<int>("LikeArticle", (counts) =>
+            {
+                LikeCount = counts;
+                StateHasChanged();
+            });
+
+            await hubConnection.StartAsync();
+        }
+
+        Task Send()
+        {
+            liked = true;
+            return hubConnection.SendAsync("Like", PostId.ToString());
+
+        }
+
+        public bool IsConnected =>
+            hubConnection.State == HubConnectionState.Connected;
+
+        public async ValueTask DisposeAsync()
+        {
+            await hubConnection.DisposeAsync();
+        }
+    }

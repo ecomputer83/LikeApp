@@ -1,0 +1,12 @@
+C:\Sandbox\LikeApp\LikeApp.Services\bin\Debug\netcoreapp3.1\LikeApp.Services.deps.json
+C:\Sandbox\LikeApp\LikeApp.Services\bin\Debug\netcoreapp3.1\LikeApp.Services.dll
+C:\Sandbox\LikeApp\LikeApp.Services\bin\Debug\netcoreapp3.1\LikeApp.Services.pdb
+C:\Sandbox\LikeApp\LikeApp.Services\bin\Debug\netcoreapp3.1\LikeApp.Repository.dll
+C:\Sandbox\LikeApp\LikeApp.Services\bin\Debug\netcoreapp3.1\LikeApp.Repository.pdb
+C:\Sandbox\LikeApp\LikeApp.Services\obj\Debug\netcoreapp3.1\LikeApp.Services.csprojAssemblyReference.cache
+C:\Sandbox\LikeApp\LikeApp.Services\obj\Debug\netcoreapp3.1\LikeApp.Services.AssemblyInfoInputs.cache
+C:\Sandbox\LikeApp\LikeApp.Services\obj\Debug\netcoreapp3.1\LikeApp.Services.AssemblyInfo.cs
+C:\Sandbox\LikeApp\LikeApp.Services\obj\Debug\netcoreapp3.1\LikeApp.Services.csproj.CoreCompileInputs.cache
+C:\Sandbox\LikeApp\LikeApp.Services\obj\Debug\netcoreapp3.1\LikeApp.Services.csproj.CopyComplete
+C:\Sandbox\LikeApp\LikeApp.Services\obj\Debug\netcoreapp3.1\LikeApp.Services.dll
+C:\Sandbox\LikeApp\LikeApp.Services\obj\Debug\netcoreapp3.1\LikeApp.Services.pdb
